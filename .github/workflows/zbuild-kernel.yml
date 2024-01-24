@@ -166,8 +166,8 @@ jobs:
        fi
        
        if [ -f android-kernel/net/netfilter/xt_qtaguid.c ]; then
-         wget https://github.com/wu17481748/lxc-docker/releases/download/lxc/lxc.patch
-         patch -p0 < lxc.patch
+         wget https://github.com/yuweiyuan8/LXC-DOCKER-KernelSU_Action/releases/download/%E9%99%84%E4%BB%B6/xt_qtaguid.patch
+         patch -p0 < xt_qtaguid.patch
        fi
 
     - name: 关闭ANDROID_PARANOID_NETWORK配置
