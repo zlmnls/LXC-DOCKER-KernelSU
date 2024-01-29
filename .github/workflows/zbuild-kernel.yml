@@ -164,11 +164,6 @@ jobs:
        if [ -f android-kernel/kernel/cgroup/cgroup.c ]; then
        ./runcpatch.sh android-kernel/kernel/cgroup/cgroup.c               
        fi
-       
-       if [ -f android-kernel/net/netfilter/xt_qtaguid.c ]; then
-         wget https://github.com/yuweiyuan8/LXC-DOCKER-KernelSU_Action/releases/download/%E9%99%84%E4%BB%B6/xt_qtaguid.patch
-         patch -p0 < xt_qtaguid.patch
-       fi
 
     - name: 关闭ANDROID_PARANOID_NETWORK配置
       if: env.ANDROID_PARANOID_NETWORK_OFF == 'true'
