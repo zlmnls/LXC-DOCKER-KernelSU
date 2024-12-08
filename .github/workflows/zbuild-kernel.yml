@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     name: Build Kernel by ${{ github.actor }}
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
       CCACHE_COMPILERCHECK: "%compiler% -dumpmachine; %compiler% -dumpversion"
@@ -57,12 +57,12 @@ jobs:
         echo "DEVICE=$(echo ${{ env.KERNEL_CONFIG }} | sed 's!vendor/!!;s/_defconfig//;s/_user//;s/-perf//')" >> $GITHUB_ENV
         sudo apt-get update
         sudo apt-get install wget binutils binutils-aarch64-linux-gnu binutils-arm-linux-gnueabi git ccache automake flex lzop bison gperf build-essential zip curl zlib1g-dev g++-multilib libxml2-utils bzip2 libbz2-dev libbz2-1.0 libghc-bzlib-dev squashfs-tools pngcrush schedtool dpkg-dev liblz4-tool make optipng maven libssl-dev pwgen libswitch-perl policycoreutils minicom libxml-sax-base-perl libxml-simple-perl bc libc6-dev-i386 lib32ncurses5-dev libx11-dev lib32z-dev libgl1-mesa-dev xsltproc unzip python2 python3
-        wget http://ftp.sjtu.edu.cn/ubuntu/pool/main/d/device-tree-compiler/device-tree-compiler_1.4.5-3_amd64.deb
-        wget http://ftp.sjtu.edu.cn/ubuntu/pool/main/d/device-tree-compiler/libfdt-dev_1.4.5-3_amd64.deb
-        wget http://ftp.sjtu.edu.cn/ubuntu/pool/main/d/device-tree-compiler/libfdt1_1.4.5-3_amd64.deb
-        sudo dpkg -i libfdt1_1.4.5-3_amd64.deb
-        sudo dpkg -i libfdt-dev_1.4.5-3_amd64.deb
-        sudo dpkg -i device-tree-compiler_1.4.5-3_amd64.deb
+        wget https://launchpad.net/ubuntu/+source/device-tree-compiler/1.4.7-1/+build/15279267/+files/device-tree-compiler_1.4.7-1_amd64.deb
+        wget https://launchpad.net/ubuntu/+source/device-tree-compiler/1.4.7-1/+build/15279267/+files/libfdt-dev_1.4.7-1_amd64.deb
+        wget https://launchpad.net/ubuntu/+source/device-tree-compiler/1.4.7-1/+build/15279267/+files/libfdt1_1.4.7-1_amd64.deb
+        sudo dpkg -i libfdt1_1.4.7-1_amd64.deb
+        sudo dpkg -i libfdt-dev_1.4.7-1_amd64.deb
+        sudo dpkg -i device-tree-compiler_1.4.7-1_amd64.deb
         mkdir -p $GITHUB_WORKSPACE/kernel_workspace
 
     - name: 切换python2.7
